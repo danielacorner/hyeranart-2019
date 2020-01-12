@@ -1,0 +1,119 @@
+backend:
+  name: github
+  repo: dcorn068/hyeranart
+
+# https://www.netlifycms.org/docs/configuration-options/#media-library
+media_folder: static/images/uploads
+public_folder: images/uploads
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dypooxy9q
+    api_key: 857318985278727
+    multiple: true
+site_url: https://hyeranart.netlify.com
+
+collections:
+  - name: painting
+    label: Single Work
+    folder: markdown-paintings
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - name: Image
+        label: Image
+        widget: image
+        default: null
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
+      - { name: title, label: Title }
+      - {
+          name: height,
+          label: Height (inches),
+          widget: number,
+          valueType: float,
+        }
+      - { name: width, label: Width (inches), widget: number, valueType: float }
+      - { name: depth, label: Depth (inches), widget: number, valueType: float }
+      - {
+          name: price,
+          label: Price ($),
+          required: false,
+          widget: number,
+          valueType: int,
+        }
+      - {
+          name: saatchiLink,
+          label: Link to Saatchi Art,
+          required: false,
+          widget: string,
+        }
+      - {
+          name: moreInfo,
+          label: More information,
+          required: false,
+          widget: markdown,
+        }
+      - { name: date, label: Date, required: false, widget: date }
+  - name: collection
+    label: Collection of Works
+    folder: markdown-collections
+    create: true
+    slug: "collection_{{slug}}"
+    fields:
+      - { name: title, label: Title }
+      - label: Images
+        name: images
+        widget: list
+        fields:
+          - {
+              name: Image,
+              label: Image,
+              widget: relation,
+              collection: painting,
+              searchFields: [title],
+              valueField: title,
+              default: null,
+            }
+      - { name: date, label: Date, required: false, widget: date }
+      - {
+          name: saatchiLink,
+          label: Link to Saatchi Art,
+          required: false,
+          widget: string,
+        }
+      - {
+          name: moreInfo,
+          label: More information,
+          required: false,
+          widget: markdown,
+        }
+  - name: page
+    label: Page
+    folder: markdown-pages
+    create: true
+    slug: "page_{{slug}}"
+    fields:
+      - { name: title, label: Title }
+      - {
+          name: pageIndex,
+          label: Page Index (order),
+          widget: number,
+          valueType: integer,
+        }
+      - {
+          name: externalLink,
+          label: External Link,
+          hint: if using external link do not use more information,
+          required: false,
+          widget: string,
+        }
+      - {
+          name: moreInfo,
+          label: More information,
+          hint: if using more information do not use external link,
+          required: false,
+          widget: markdown,
+        }
