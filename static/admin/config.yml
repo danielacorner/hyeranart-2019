@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: dcorn068/hyeranart
+  repo: dcorn068/hyeranart-2019
 
 # https://www.netlifycms.org/docs/configuration-options/#media-library
 media_folder: static/images/uploads
@@ -11,7 +11,7 @@ media_library:
     cloud_name: dypooxy9q
     api_key: 857318985278727
     multiple: true
-site_url: https://hyeranart.netlify.com
+site_url: https://hyeranart-2019.netlify.com
 
 collections:
   - name: painting
