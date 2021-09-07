@@ -33,7 +33,7 @@
     "react-tilt": "^0.1.4",
     "react-vanilla-tilt": "^1.0.0",
     "remark": "^11.0.2",
-    "remark-html": "^10.0.0",
+    "remark-html": "^13.0.2",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
